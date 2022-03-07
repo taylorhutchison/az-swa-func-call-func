@@ -1,22 +1,23 @@
 <!doctype html>
 <html>
-    <head>
 
-    </head>
-    <body>
-        <button>Call Function A</button>
-        <div id="responseText"></div>
-        <script>
+<body>
+    <button>Call Function A</button>
+    <div id="responseText"></div>
+    <script>
 
-            const button = document.getElementsByTagName('button')[0];
-            const responseText = document.getElementById("responseText");
+        const button = document.getElementsByTagName('button')[0];
+        const responseText = document.getElementById("responseText");
 
-            button.addEventListener('click', function() {
-                fetch('api/functionA')
-                    .then(function(response) {
-                       responseText.innerText = response.json();
+        button.addEventListener('click', function () {
+            fetch('api/functionA')
+                .then(function (response) {
+                    response.text().then(text => {
+                        responseText.innerText = text;
                     })
-            });
-        </script>
-    </body>
+                })
+        });
+    </script>
+</body>
+
 </html>
